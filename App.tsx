@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { Text, View } from 'react-native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import './global.css';
+import './styles/global.css';
 // import { GluestackUIProvider } from '@gluestack-ui/themed';
 // import { config } from '@gluestack-ui/config';
 
