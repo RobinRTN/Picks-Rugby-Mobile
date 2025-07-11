@@ -1,20 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import './global.css';
+// import { GluestackUIProvider } from '@gluestack-ui/themed';
+// import { config } from '@gluestack-ui/config';
+
+const queryClient = new QueryClient();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <QueryClientProvider client={queryClient}>
+      <View className="flex-1 items-center justify-center bg-red-500">
+        <Text className="text-xl font-bold text-blue-500">
+          Welcome to Nativewind!
+        </Text>
+      </View>
+    </QueryClientProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
