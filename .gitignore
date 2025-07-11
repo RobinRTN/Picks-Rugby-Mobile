@@ -3,16 +3,6 @@
 # dependencies
 node_modules/
 
-# Package managers
-package-lock.json
-yarn-error.log
-yarn-debug.log*
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
-.pnp.*
-
 # Expo
 .expo/
 dist/
@@ -42,15 +32,6 @@ yarn-error.*
 
 # local env files
 .env*.local
-.env
 
 # typescript
 *.tsbuildinfo
-
-# IDE
-.vscode/
-.idea/
-
-# Logs
-logs
-*.log
