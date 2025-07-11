@@ -6,15 +6,11 @@ module.exports = {
   content: [
     "App.{tsx,jsx,ts,js}",
     "index.{tsx,jsx,ts,js}",
-    "components/**/*.{tsx,jsx,ts,js}"
+    "components/**/*.{tsx,jsx,ts,js}",
+    "src/**/*.{tsx,jsx,ts,js}"
   ],
   presets: [require('nativewind/preset')],
-  safelist: [
-    {
-      pattern:
-        /(bg|border|text|stroke|fill)-(primary|secondary|tertiary|error|success|warning|info|typography|outline|background|indicator)-(0|50|100|200|300|400|500|600|700|800|900|950|white|gray|black|error|warning|muted|success|info|light|dark|primary)/,
-    },
-  ],
+  // Remove safelist entirely - Tailwind will auto-detect classes
   theme: {
     extend: {
       colors: {

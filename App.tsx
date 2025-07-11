@@ -64,7 +64,7 @@ export default function App() {
             className="w-64 rounded-lg items-center py-3 mb-2"
             colors={['#003DB3', '#00B89E']}
             start={[0, 1]}
-            end={[1, 0]}
+            end={[0, 0]}
           >
             <Text className="text-white font-semibold">Vertical Blue Gradient</Text>
           </LinearGradient>
