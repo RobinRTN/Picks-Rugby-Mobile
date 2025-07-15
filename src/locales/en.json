@@ -32,7 +32,7 @@
     "invalidPassword": "Password must be at least 6 characters",
     "invalidCredentials": "Invalid email or password",
     "networkError": "Please check your internet connection",
-    "serverError": "Something went wrong. Please try again later",
+    "serverError": "Something went wrong",
     "connectionError": "Connection Error",
     "connectionMessage": "Please check your internet connection",
     "serverErrorMessage": "Please try again later"

@@ -36,7 +36,8 @@
     "react-native-toast-message": "^2.3.3",
     "zod": "^4.0.5",
     "zustand": "^5.0.6",
-    "expo-localization": "~16.1.6"
+    "expo-localization": "~16.1.6",
+    "expo-haptics": "~14.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

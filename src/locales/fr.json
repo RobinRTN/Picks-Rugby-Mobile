@@ -32,7 +32,7 @@
     "invalidPassword": "Le mot de passe doit contenir au moins 6 caractères",
     "invalidCredentials": "Email ou mot de passe invalide",
     "networkError": "Vérifiez votre connexion internet",
-    "serverError": "Une erreur s'est produite. Veuillez réessayer plus tard",
+    "serverError": "Une erreur s'est produite",
     "connectionError": "Erreur de connexion",
     "connectionMessage": "Vérifiez votre connexion internet",
     "serverErrorMessage": "Veuillez réessayer plus tard"

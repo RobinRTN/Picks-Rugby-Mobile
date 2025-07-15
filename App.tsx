@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { LinearGradient } from '@/src/components/ui/linear-gradient';
 import { queryClient } from '@/src/services/queryClient';
-import '@/src/i18n';
+import '@/src/services/i18n';
 
 
 export default function App() {

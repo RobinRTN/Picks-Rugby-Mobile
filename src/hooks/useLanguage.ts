@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Localization from 'expo-localization';
 
+// Hook to manage the language of the app (detect the language of the device and save it in the async storage).
+
 const LANGUAGE_KEY = 'userLanguage';
 
 export function useLanguage() {
