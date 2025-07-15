@@ -2,10 +2,12 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { authApi } from "../api/auth";
 import { setTokens, clearTokens } from "../services/tokenService";
 import { useAuthStore } from "@/src/stores/authStore";
+import { useErrorHandler } from "./useErrorHandler";
 
 export function useLogin() {
     const setUser = useAuthStore((state) => state.setUser);
     const queryClient = useQueryClient();
+    const { handleError } = useErrorHandler();
 
     return useMutation({
         mutationFn: authApi.login,
@@ -19,19 +21,23 @@ export function useLogin() {
             setUser(data.user);
             queryClient.invalidateQueries({ queryKey: ['user'] });
         },
+        onError: handleError,
     });
 }
 
 export function useSignup() {
+    const { handleError } = useErrorHandler();
+
     return useMutation({
         mutationFn: authApi.signup,
+        onError: handleError,
     });
 }
 
 export function useLogout() {
     const queryClient = useQueryClient();
     const logout = useAuthStore((state) => state.logout);
-
+    
     return useMutation({
         mutationFn: async () => {
             await authApi.logout();
@@ -57,13 +63,19 @@ export function useRefreshToken() {
 }
 
 export function useForgotPassword() {
+    const { handleError } = useErrorHandler();
+
     return useMutation({
         mutationFn: authApi.forgotPassword,
+        onError: handleError,
     });
 }
 
 export function useResendVerificationEmail() {
+    const { handleError } = useErrorHandler();
+
     return useMutation({
         mutationFn: authApi.resendVerificationEmail,
+        onError: handleError,
     });
 }

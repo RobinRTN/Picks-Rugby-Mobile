@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#007A5C"  // Your main green
+      "backgroundColor": "#007A5C"
     },
     "ios": {
       "supportsTablet": true
@@ -18,13 +18,16 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#007A5C"  // Your main green
+        "backgroundColor": "#007A5C"
       },
       "edgeToEdgeEnabled": true
     },
     "web": {
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
-    }
+    },
+    "plugins": [
+      "expo-localization"
+    ]
   }
 }

@@ -22,17 +22,21 @@
     "expo": "~53.0.17",
     "expo-linear-gradient": "~14.1.5",
     "expo-status-bar": "~2.2.3",
+    "i18next": "^25.3.2",
     "ky": "^1.8.1",
     "nativewind": "^4.1.23",
     "react": "^19.0.0",
+    "react-i18next": "^15.6.0",
     "react-native": "0.79.5",
     "react-native-async-storage": "^0.0.1",
     "react-native-css-interop": "^0.1.22",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "^5.5.2",
     "react-native-svg": "^15.2.0",
+    "react-native-toast-message": "^2.3.3",
     "zod": "^4.0.5",
-    "zustand": "^5.0.6"
+    "zustand": "^5.0.6",
+    "expo-localization": "~16.1.6"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

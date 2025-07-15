@@ -1,0 +1,40 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close"
+  },
+  "auth": {
+    "login": "Sign In",
+    "signup": "Sign Up",
+    "logout": "Sign Out",
+    "email": "Email",
+    "password": "Password",
+    "username": "Username",
+    "forgotPassword": "Forgot Password?",
+    "resetPassword": "Reset Password",
+    "resendVerification": "Resend Verification Email",
+    "welcomeBack": "Welcome back!",
+    "loginSuccess": "Successfully signed in",
+    "logoutSuccess": "Successfully signed out",
+    "accountCreated": "Account created successfully",
+    "verificationEmailSent": "Please check your email to verify your account"
+  },
+  "errors": {
+    "required": "This field is required",
+    "invalidEmail": "Please enter a valid email",
+    "invalidPassword": "Password must be at least 6 characters",
+    "invalidCredentials": "Invalid email or password",
+    "networkError": "Please check your internet connection",
+    "serverError": "Something went wrong. Please try again later",
+    "connectionError": "Connection Error",
+    "connectionMessage": "Please check your internet connection",
+    "serverErrorMessage": "Please try again later"
+  }
+}

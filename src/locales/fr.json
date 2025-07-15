@@ -1,0 +1,40 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "close": "Fermer"
+  },
+  "auth": {
+    "login": "Se connecter",
+    "signup": "S'inscrire",
+    "logout": "Se déconnecter",
+    "email": "Email",
+    "password": "Mot de passe",
+    "username": "Nom d'utilisateur",
+    "forgotPassword": "Mot de passe oublié ?",
+    "resetPassword": "Réinitialiser le mot de passe",
+    "resendVerification": "Renvoyer l'email de vérification",
+    "welcomeBack": "Bon retour !",
+    "loginSuccess": "Connexion réussie",
+    "logoutSuccess": "Déconnexion réussie",
+    "accountCreated": "Compte créé avec succès",
+    "verificationEmailSent": "Vérifiez votre email pour confirmer votre compte"
+  },
+  "errors": {
+    "required": "Ce champ est requis",
+    "invalidEmail": "Veuillez entrer un email valide",
+    "invalidPassword": "Le mot de passe doit contenir au moins 6 caractères",
+    "invalidCredentials": "Email ou mot de passe invalide",
+    "networkError": "Vérifiez votre connexion internet",
+    "serverError": "Une erreur s'est produite. Veuillez réessayer plus tard",
+    "connectionError": "Erreur de connexion",
+    "connectionMessage": "Vérifiez votre connexion internet",
+    "serverErrorMessage": "Veuillez réessayer plus tard"
+  }
+}
