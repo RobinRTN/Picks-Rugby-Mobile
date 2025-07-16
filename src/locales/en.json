@@ -36,5 +36,8 @@
     "connectionError": "Connection Error",
     "connectionMessage": "Please check your internet connection",
     "serverErrorMessage": "Please try again later"
+  },
+  "home": {
+    "catchy_text": "Rugby in the blood, flair in the predictions!"
   }
 }

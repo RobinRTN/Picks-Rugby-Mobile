@@ -36,5 +36,8 @@
     "connectionError": "Erreur de connexion",
     "connectionMessage": "Vérifiez votre connexion internet",
     "serverErrorMessage": "Veuillez réessayer plus tard"
+  },
+  "home": {
+    "catchy_text": "Rugby dans le sang, flair dans les pronos !"
   }
 }
