@@ -9,6 +9,8 @@
     "web": "DARK_MODE=media expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/manrope": "^0.4.1",
+    "@expo-google-fonts/outfit": "^0.4.2",
     "@expo/metro-runtime": "~5.0.4",
     "@gluestack-ui/button": "^1.0.14",
     "@gluestack-ui/icon": "^0.1.27",
@@ -23,6 +25,7 @@
     "babel-plugin-module-resolver": "^5.0.2",
     "dotenv": "^17.2.0",
     "expo": "~53.0.17",
+    "expo-font": "~13.3.2",
     "expo-haptics": "~14.1.4",
     "expo-linear-gradient": "~14.1.5",
     "expo-localization": "~16.1.6",
@@ -35,14 +38,16 @@
     "react-native": "0.79.5",
     "react-native-async-storage": "^0.0.1",
     "react-native-css-interop": "^0.1.22",
+    "react-native-gesture-handler": "~2.24.0",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
     "react-native-svg": "^15.2.0",
     "react-native-toast-message": "^2.3.3",
+    "react-native-web": "^0.20.0",
     "zod": "^4.0.5",
     "zustand": "^5.0.6",
-    "react-native-gesture-handler": "~2.24.0"
+    "expo-splash-screen": "~0.30.10"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

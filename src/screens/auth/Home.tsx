@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Pressable } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonText } from '@/components/ui/button';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
@@ -22,7 +21,7 @@ export default function Home() {
     return (
         <View className="flex-1 bg-green-main">
             {/* Main Content */}
-            <View className="flex-1 justify-center items-center px-8">
+            <View className="flex-1 justify-evenly items-center px-8">
                 <View className='flex-1 justify-center items-center'>
                     <Image
                         source={{ 
@@ -32,7 +31,7 @@ export default function Home() {
                         }}
                     />
                 </View>
-                <View className="flex-1 justify-center items-center">
+                <View className="flex-1 justify-center items-center mb-24">
                     <Image
                         source={{ 
                             uri: 'https://assets.picks-rugby.com/brand/running_player_bigger.png',
@@ -43,36 +42,32 @@ export default function Home() {
                         resizeMode="contain" 
                     />                   
                 </View>
-
-                {/* Catchy Text */}
-                <View className="flex-1 justify-center items-center mb-8">
-                    <Text className="text-xl font-semibold text-beige-light text-center mb-3 mt-4 font-heading">
-                        {t('home.catchy_text', 'Rugby dans le sang, flair dans les pronos !')}
-                    </Text>
-                </View>
             </View>
 
             {/* Bottom Action Buttons */}
             <View className="px-8 pb-12">
+                <Text className="text-lg text-beige-light text-center mb-6 mt-4 font-body px-4">
+                    {t('home.catchy_text', 'Rugby dans le sang, flair dans les pronos !')}
+                </Text>
                 {/* Primary Button - Sign In */}
-                <Button 
-                    className="bg-white border-2 border-white mb-4 w-full rounded-xl py-4 font-semibold"
+                <Pressable 
+                    className="bg-beige-main mb-4 w-full rounded-xl py-6 font-semibold items-center justify-center"
                     onPress={() => navigation.navigate('Login')}
                 >
-                    <ButtonText className="text-green-main font-semibold text-lg">
+                    <Text className="text-green-dark font-bold text-lg font-heading">
                         {t('auth.login', 'Se connecter')}
-                    </ButtonText>
-                </Button>
+                    </Text>
+                </Pressable>
 
                 {/* Secondary Button - Sign Up */}
-                <Button 
-                    className="bg-transparent border-2 border-white w-full rounded-xl py-4 font-semibold"
+                <Pressable 
+                    className="bg-green-lightest w-full rounded-xl py-6 font-semibold items-center justify-center"
                     onPress={() => navigation.navigate('Signup')}
                 >
-                    <ButtonText className="text-white font-semibold text-lg">
+                    <Text className="text-green-darkest font-bold text-lg font-heading">
                         {t('auth.signup', 'S\'inscrire')}
-                    </ButtonText>
-                </Button>
+                    </Text>
+                </Pressable>
             </View>
         </View>
     );

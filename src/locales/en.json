@@ -11,8 +11,8 @@
     "close": "Close"
   },
   "auth": {
-    "login": "Sign In",
-    "signup": "Sign Up",
+    "login": "SIGN IN",
+    "signup": "SIGN UP",
     "logout": "Sign Out",
     "email": "Email",
     "password": "Password",
