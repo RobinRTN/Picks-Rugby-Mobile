@@ -29,6 +29,7 @@
     "expo-haptics": "~14.1.4",
     "expo-linear-gradient": "~14.1.5",
     "expo-localization": "~16.1.6",
+    "expo-splash-screen": "~0.30.10",
     "expo-status-bar": "~2.2.3",
     "i18next": "^25.3.2",
     "ky": "^1.8.1",
@@ -46,8 +47,7 @@
     "react-native-toast-message": "^2.3.3",
     "react-native-web": "^0.20.0",
     "zod": "^4.0.5",
-    "zustand": "^5.0.6",
-    "expo-splash-screen": "~0.30.10"
+    "zustand": "^5.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
