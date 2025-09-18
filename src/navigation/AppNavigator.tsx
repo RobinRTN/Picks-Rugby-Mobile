@@ -1,6 +1,7 @@
 export function AppNavigator() {
     return (
         <>
+          
         </>
     );
 }

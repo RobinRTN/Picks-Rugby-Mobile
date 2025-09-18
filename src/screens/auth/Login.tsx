@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { AnimatedText } from '@/src/components/ui/AnimatedText';
 import { GoogleSignInButton } from '@/src/components/ui/GoogleSignInButton';
+import { useLogin } from '@/src/hooks/useAuth';
 
 type AuthStackParamList = {
   Home: undefined;
@@ -19,10 +20,11 @@ type NavigationProp = StackNavigationProp<AuthStackParamList, 'Login'>;
 export default function Login() {
     const { t } = useTranslation();
     const navigation = useNavigation<NavigationProp>();
-    
+    const loginMutation = useLogin();
+    const isLoading = loginMutation.isPending;
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
     const [isGoogleLoading, setIsGoogleLoading] = useState(false);
 
     const handleGoogleSignIn = async () => {
@@ -30,10 +32,10 @@ export default function Login() {
             setIsGoogleLoading(true);
             // TODO: Call your backend API here
             console.log('Google OAuth pressed - will call backend');
-            
+
             // Simulate API call
             await new Promise(resolve => setTimeout(resolve, 1000));
-            
+
         } catch (error) {
             console.error('Google Sign-In Error:', error);
         } finally {
@@ -43,29 +45,36 @@ export default function Login() {
 
     const handleLogin = async () => {
         if (!email || !password) return;
-        
-        setIsLoading(true);
-        // TODO: Implement login logic
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
+
+        loginMutation.mutate(
+          { email, password },
+          {
+            onSuccess: () => {
+              // Navigate after successful login
+              navigation.navigate('Home');
+            },
+            onError: (err: any) => {
+              console.error('Login failed:', err);
+            },
+          }
+        );
     };
 
     const isFormValid = email.length > 0 && password.length > 0;
 
     return (
-        <KeyboardAvoidingView 
+        <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             className="flex-1 bg-green-main"
         >
-            <ScrollView 
+            <ScrollView
                 contentContainerStyle={{ flexGrow: 1 }}
                 keyboardShouldPersistTaps="handled"
                 showsVerticalScrollIndicator={false}
             >
 
                 <View className="absolute top-16 left-6 z-10">
-                    <Pressable 
+                    <Pressable
                         onPress={() => navigation.goBack()}
                         className="bg-beige-main/90 px-3 py-2 rounded-lg shadow-sm"
                     >
@@ -78,14 +87,14 @@ export default function Login() {
                 <View className="flex-1 justify-center px-8 pt-20">
                     {/* Header */}
                     <View className="mb-12">
-                        <AnimatedText 
+                        <AnimatedText
                             className="text-3xl text-beige-light font-bold text-center mb-2 font-heading"
                             delay={200}
                             animationType="modern"
                         >
                             {t('auth.welcomeBack', 'Bienvenue')}
                         </AnimatedText>
-                        <AnimatedText 
+                        <AnimatedText
                             className="text-beige-light/80 text-center font-body"
                             delay={400}
                             animationType="modern"
@@ -97,7 +106,7 @@ export default function Login() {
                     <View className="space-y-4">
                         {/* Email Input */}
                         <View>
-                            <Text 
+                            <Text
                                 className="text-beige-light font-medium mb-2 font-body"
                             >
                                 {t('auth.email', 'Email')}
@@ -117,7 +126,7 @@ export default function Login() {
 
                         {/* Password Input */}
                         <View className='mt-4'>
-                            <Text 
+                            <Text
                                 className="text-beige-light font-medium mb-2 font-body"
                             >
                                 {t('auth.password', 'Password')}
@@ -135,33 +144,33 @@ export default function Login() {
                             />
                         </View>
 
-                        <Pressable 
+                        <Pressable
                             onPress={() => navigation.navigate('ForgotPassword')}
                             className="self-end mt-2"
                         >
-                            <Text 
+                            <Text
                                 className="text-beige-light/80 font-body underline"
                             >
                                 {t('auth.forgotPassword', 'Mot de passe oublié ?')}
                             </Text>
                         </Pressable>
 
-                        <Pressable 
+                        <Pressable
                             className={`w-full rounded-xl py-4 font-semibold items-center justify-center active:scale-98 mt-6 ${
-                                isFormValid 
-                                    ? 'bg-beige-main active:bg-beige-light' 
+                                isFormValid
+                                    ? 'bg-beige-main active:bg-beige-light'
                                     : 'bg-beige-main/50'
                             }`}
                             onPress={handleLogin}
                             disabled={!isFormValid || isLoading}
                         >
-                            <Text 
+                            <Text
                                 className={`font-bold text-sm font-heading ${
                                     isFormValid ? 'text-green-dark' : 'text-beige-light/50'
                                 }`}
                             >
-                                {isLoading 
-                                    ? t('auth.signingIn', 'Connexion...') 
+                                {isLoading
+                                    ? t('auth.signingIn', 'Connexion...')
                                     : t('auth.login', 'SE CONNECTER')
                                 }
                             </Text>
