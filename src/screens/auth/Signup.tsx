@@ -46,12 +46,12 @@ export default function Signup() {
 
     const handleSignup = async () => {
         if (!email || !password) return;
+        console.log("HERE");
 
         signupMutation.mutate(
           { email, password },
           {
             onSuccess: () => {
-              // Navigate after successful login
               navigation.navigate('Login');
             },
             onError: (err: any) => {
