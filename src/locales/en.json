@@ -55,7 +55,7 @@
   "errors": {
     "required": "This field is required",
     "invalidEmail": "Please enter a valid email",
-    "invalidPassword": "Password must be at least 6 characters",
+    "invalidPassword": "Password must be at least 8 characters",
     "invalidCredentials": "Invalid email or password",
     "invalidVerificationCode": "Invalid verification code",
     "networkError": "Please check your internet connection",

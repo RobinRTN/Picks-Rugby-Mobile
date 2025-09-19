@@ -55,7 +55,7 @@
   "errors": {
     "required": "Ce champ est requis",
     "invalidEmail": "Veuillez entrer un email valide",
-    "invalidPassword": "Le mot de passe doit contenir au moins 6 caractères",
+    "invalidPassword": "Le mot de passe doit contenir au moins 8 caractères",
     "invalidCredentials": "Email ou mot de passe invalide",
     "invalidVerificationCode": "Code de vérification invalide",
     "networkError": "Vérifiez votre connexion internet",

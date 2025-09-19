@@ -6,6 +6,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { AnimatedText } from '@/src/components/ui/AnimatedText';
 import { GoogleSignInButton } from '@/src/components/ui/GoogleSignInButton';
 import { useLogin } from '@/src/hooks/useAuth';
+import { useErrorHandler } from '@/src/hooks/useErrorHandler'
 
 type AuthStackParamList = {
   Home: undefined;
@@ -26,6 +27,7 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+    const {getErrorMessage, shouldShowFormError } = useErrorHandler();
 
     const handleGoogleSignIn = async () => {
         try {
@@ -54,13 +56,18 @@ export default function Login() {
               navigation.navigate('Home');
             },
             onError: (err: any) => {
-              console.error('Login failed:', err);
+              // console.error('Login failed:', err);
             },
           }
         );
     };
 
-    const isFormValid = email.length > 0 && password.length > 0;
+    const isFormValid = email.length > 0 && password.length > 7;
+
+    const formError =
+      loginMutation.error && shouldShowFormError(loginMutation.error)
+        ? getErrorMessage(loginMutation.error)
+        : null;
 
     return (
         <KeyboardAvoidingView
@@ -143,6 +150,12 @@ export default function Login() {
                                 style={{ fontSize: 16 }}
                             />
                         </View>
+
+                        {formError && (
+                          <Text className="text-red-400 mt-2 font-body">
+                            {formError}
+                          </Text>
+                        )}
 
                         <Pressable
                             onPress={() => navigation.navigate('ForgotPassword')}

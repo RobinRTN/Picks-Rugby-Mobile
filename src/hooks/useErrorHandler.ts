@@ -10,14 +10,17 @@ export function useErrorHandler() {
     return (
       error?.message?.includes('Network') ||
       error?.message?.includes('fetch') ||
-      error?.code === 'NETWORK_ERROR' ||
-      !navigator.onLine
+      error?.code === 'NETWORK_ERROR'
     );
   };
 
   const getErrorMessage = (error: any): string => {
     if (isNetworkError(error)) {
       return t('errors.networkError');
+    }
+
+    if (error?.response?.status === 400) {
+      return t('errors.invalidPassword');
     }
 
     if (error?.response?.status === 401) {
@@ -40,7 +43,9 @@ export function useErrorHandler() {
   };
 
   const shouldShowFormError = (error: any): boolean => {
-    return error?.response?.status >= 400 && error?.response?.status < 500 && error?.response?.status !== 401;
+    console.log(error);
+    const status = error?.response?.status;
+    return status >= 400 && status < 500;
   };
 
   const handleError = useCallback((error: any) => {
@@ -60,4 +65,4 @@ export function useErrorHandler() {
     shouldShowFormError,
     isNetworkError,
   };
-} 
+}
