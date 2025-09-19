@@ -50,7 +50,9 @@
     "resending": "Sending...",
     "backToLogin": "Back to Login",
     "noVerificationEmail": "I haven't received the verification email",
-    "continueWithGoogle": "Continue with Google"
+    "continueWithGoogle": "Continue with Google",
+    "signupSuccessTitle": " Account created!",
+    "signupSuccessMessage": "You can now log in"
   },
   "errors": {
     "required": "This field is required",
@@ -58,11 +60,14 @@
     "invalidPassword": "Password must be at least 8 characters",
     "invalidCredentials": "Invalid email or password",
     "invalidVerificationCode": "Invalid verification code",
+    "emailUsed": "Email already registered",
     "networkError": "Please check your internet connection",
     "serverError": "Something went wrong",
     "connectionError": "Connection Error",
     "connectionMessage": "Please check your internet connection",
-    "serverErrorMessage": "Please try again later"
+    "serverErrorMessage": "Please try again later",
+    "tooManyRequests": "Too many attempts",
+    "tooManyRequestsMessage": "Please try again in 1 minute"
   },
   "home": {
     "catchy_text": "Rugby in the blood, flair in the predictions!"

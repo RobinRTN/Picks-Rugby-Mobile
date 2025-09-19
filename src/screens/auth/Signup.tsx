@@ -6,7 +6,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { AnimatedText } from '@/src/components/ui/AnimatedText';
 import { GoogleSignInButton } from '@/src/components/ui/GoogleSignInButton';
 import { useSignup } from '@/src/hooks/useAuth';
-
+import { useErrorHandler } from '@/src/hooks/useErrorHandler'
+import { useToast } from '@/src/hooks/useToast';
 
 type AuthStackParamList = {
   Home: undefined;
@@ -23,10 +24,12 @@ export default function Signup() {
     const navigation = useNavigation<NavigationProp>();
     const signupMutation = useSignup();
     const isLoading = signupMutation.isPending;
+    const toast = useToast();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+    const {getErrorMessage, shouldShowFormError } = useErrorHandler();
 
     const handleGoogleSignIn = async () => {
         try {
@@ -46,22 +49,31 @@ export default function Signup() {
 
     const handleSignup = async () => {
         if (!email || !password) return;
-        console.log("HERE");
 
         signupMutation.mutate(
           { email, password },
           {
             onSuccess: () => {
+              toast.showSuccess(
+                'auth.signupSuccessTitle',
+                true,
+                'auth.signupSuccessMessage'
+              );
               navigation.navigate('Login');
             },
             onError: (err: any) => {
-              console.error('Login failed:', err);
+              // console.error('Login failed:', err);
             },
           }
         );
     };
 
-    const isFormValid = email.length > 0 && password.length > 0;
+    const isFormValid = email.length > 0 && password.length > 7;
+
+    const formError =
+      signupMutation.error && shouldShowFormError(signupMutation.error)
+        ? getErrorMessage(signupMutation.error)
+        : null;
 
     return (
         <KeyboardAvoidingView
@@ -144,6 +156,12 @@ export default function Signup() {
                                 style={{ fontSize: 16 }}
                             />
                         </View>
+
+                        {formError && (
+                          <Text className="text-red-400 mt-2 font-body">
+                            {formError}
+                          </Text>
+                        )}
 
                         <Pressable
                             className={`w-full rounded-xl py-4 font-semibold items-center justify-center active:scale-98 mt-6 ${

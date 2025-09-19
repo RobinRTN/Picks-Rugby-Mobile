@@ -31,7 +31,7 @@ export default function Home() {
     return (
         <View className="flex-1 bg-green-main">
             <View className="absolute top-16 right-6 z-10">
-                <Pressable 
+                <Pressable
                     onPress={toggleLanguage}
                     className="px-2 py-2 rounded-lg shadow-sm border border-beige-main"
                 >
@@ -46,27 +46,27 @@ export default function Home() {
                     <Image
                         source={logo}
                         className='h-20 w-auto mt-8'
-                        resizeMode="contain" 
+                        resizeMode="contain"
                     />
                 </View>
                 <View className="flex-1 justify-center items-center mb-24">
                     <Image
                         source={runningPlayer}
                         className='h-124 w-auto mt-8'
-                        resizeMode="contain" 
-                    />                   
+                        resizeMode="contain"
+                    />
                 </View>
             </View>
 
             <View className="px-8 pb-12">
-                <AnimatedText 
+                <AnimatedText
                     className="text-lg text-beige-light text-center mb-6 mt-4 font-body px-4"
                     delay={600}
                     animationType="fade"
                 >
                     {t('home.catchy_text', 'Rugby dans le sang, flair dans les pronos !')}
                 </AnimatedText>
-                <Pressable 
+                <Pressable
                     className="bg-beige-main mb-3 w-full rounded-xl py-4 font-semibold items-center justify-center active:scale-98 active:bg-beige-light"
                     onPress={() => navigation.navigate('Login')}
                 >
@@ -75,7 +75,7 @@ export default function Home() {
                     </Text>
                 </Pressable>
 
-                <Pressable 
+                <Pressable
                     className="bg-green-lightest w-full rounded-xl py-4 font-semibold items-center justify-center active:scale-98 mb-5 active:bg-green-light"
                     onPress={() => navigation.navigate('Signup')}
                 >

@@ -19,7 +19,7 @@ export function useToast() {
         visibilityTime: 3000,
       });
     },
-    
+
     // Generic toast messages on Error
     showError: (titleKey: string, vibration: boolean, messageKey?: string) => {
       if (vibration) {
@@ -37,7 +37,7 @@ export function useToast() {
     // Network error toast
     showNetworkError: () => {
       Toast.show({
-        type: 'error',  
+        type: 'error',
         text1: t('errors.connectionError'),
         text2: t('errors.connectionMessage'),
         position: 'top',
@@ -55,5 +55,15 @@ export function useToast() {
         visibilityTime: 4000,
       });
     },
+
+    showLimitError: () => {
+      Toast.show({
+        type: 'error',
+        text1: t('errors.tooManyRequests'),
+        text2: t('errors.tooManyRequestsMessage'),
+        position: 'top',
+        visibilityTime: 4000,
+      });
+    },
   };
-} 
+}

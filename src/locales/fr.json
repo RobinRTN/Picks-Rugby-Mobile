@@ -50,7 +50,10 @@
     "resending": "Envoi...",
     "backToLogin": "Retour à la connexion",
     "noVerificationEmail": "Je n'ai pas reçu l'email de vérification",
-    "continueWithGoogle": "Continuer avec Google"
+    "continueWithGoogle": "Continuer avec Google",
+    "signupSuccessTitle": "Compte créé !",
+    "signupSuccessMessage": "Vous pouvez maintenant vous connecter"
+
   },
   "errors": {
     "required": "Ce champ est requis",
@@ -58,11 +61,14 @@
     "invalidPassword": "Le mot de passe doit contenir au moins 8 caractères",
     "invalidCredentials": "Email ou mot de passe invalide",
     "invalidVerificationCode": "Code de vérification invalide",
+    "emailUsed": "Cet email est déjà utilisé",
     "networkError": "Vérifiez votre connexion internet",
     "serverError": "Une erreur s'est produite",
     "connectionError": "Erreur de connexion",
     "connectionMessage": "Vérifiez votre connexion internet",
-    "serverErrorMessage": "Veuillez réessayer plus tard"
+    "serverErrorMessage": "Veuillez réessayer plus tard",
+    "tooManyRequests": "Trop de tentatives",
+    "tooManyRequestsMessage": "Veuillez réessayer dans 1 minute"
   },
   "home": {
     "catchy_text": "Rugby dans le sang, flair dans les pronos !"
