@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { AuthNavigator } from '@/src/navigation/AuthNavigator';
+import { OnboardingNavigator } from '@/src/navigation/OnboardingNavigator';
 import { AppNavigator } from '@/src/navigation/AppNavigator';
 import { useAuthStore } from '@/src/stores/authStore';
 
