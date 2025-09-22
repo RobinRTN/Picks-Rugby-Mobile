@@ -56,7 +56,10 @@
     "resetPasswordSubtitle": "Entre ton email et nous t'enverrons un lien pour réinitialiser ton mot de passe",
     "sendResetLink": "Envoyer le lien",
     "verifyEmail": "Vérifie ton email",
-    "verifyEmailSubtitle": "Si ton email existe, nous t'avons envoyé un email de vérification !"
+    "verifyEmailSubtitle": "Si ton email existe, nous t'avons envoyé un email de vérification !",
+    "resetPasswordEmail": "Email envoyé",
+    "resetPasswordEmailSent": "Si ton email existe, nous t'avons envoyé un email de réinitialisation de mot de passe"
+
 
   },
   "errors": {

@@ -4,6 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { AnimatedText } from '@/src/components/ui/AnimatedText';
+import { useForgotPassword } from '@/src/hooks/useAuth';
+import { useToast } from '@/src/hooks/useToast';
+import { useErrorHandler } from '@/src/hooks/useErrorHandler';
 
 type AuthStackParamList = {
   Home: undefined;
@@ -19,27 +22,30 @@ export default function ForgotPassword() {
     const { t } = useTranslation();
     const navigation = useNavigation<NavigationProp>();
     const [email, setEmail] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+    const resetPasswordMutation = useForgotPassword();
+    const isLoading = resetPasswordMutation.isPending;
+    const toast = useToast();
+    const { getErrorMessage, shouldShowFormError } = useErrorHandler();
 
     const handleResetPassword = async () => {
         if (!email) return;
 
-        try {
-            setIsLoading(true);
-            // TODO: Call your backend API to send password reset email
-            console.log('Send password reset email for:', email);
-
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 1000));
-
-        } catch (error) {
-            console.error('Password reset error:', error);
-        } finally {
-            setIsLoading(false);
-        }
+        resetPasswordMutation.mutate(email, {
+            onSuccess: () => {
+                toast.showSuccess('auth.resetPasswordEmail', true, 'auth.resetPasswordEmailSent');
+            },
+            onError: (err: any) => {
+                console.error('Reset password error:', err);
+            }
+        });
     };
 
-    const isFormValid = email.length > 0;
+    const isFormValid = email.length > 3;
+
+    const formError =
+    resetPasswordMutation.error && shouldShowFormError(resetPasswordMutation.error)
+      ? getErrorMessage(resetPasswordMutation.error)
+      : null;
 
     return (
         <KeyboardAvoidingView
@@ -102,6 +108,12 @@ export default function ForgotPassword() {
                             />
                         </View>
 
+                        {formError && (
+                          <Text className="text-red-400 mt-2 font-body">
+                            {formError}
+                          </Text>
+                        )}
+
                         <Pressable
                             className={`w-full rounded-xl py-4 font-semibold items-center justify-center active:scale-98 mt-6 ${
                                 isFormValid
@@ -117,7 +129,7 @@ export default function ForgotPassword() {
                                 }`}
                             >
                                 {isLoading
-                                    ? t('auth.resending')
+                                    ? t('auth.sending')
                                     : t('auth.sendResetLink')
                                 }
                             </Text>

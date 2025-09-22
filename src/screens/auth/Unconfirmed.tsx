@@ -39,7 +39,7 @@ export default function Unconfirmed() {
           });
     };
 
-    const isFormValid = email.length > 0;
+    const isFormValid = email.length > 3;
 
     const formError =
     resendVerificationEmailMutation.error && shouldShowFormError(resendVerificationEmailMutation.error)
