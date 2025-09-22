@@ -20,7 +20,7 @@ export function useErrorHandler() {
     }
 
     if (error?.response?.status === 400) {
-      return t('errors.invalidPassword');
+      return t('errors.invalidEmail');
     }
 
     if (error?.response?.status === 401) {
@@ -52,7 +52,6 @@ export function useErrorHandler() {
   };
 
   const shouldShowFormError = (error: any): boolean => {
-    console.log(error);
     const status = error?.response?.status;
     return status >= 400 && status < 500 && status && status !== 429;
   };

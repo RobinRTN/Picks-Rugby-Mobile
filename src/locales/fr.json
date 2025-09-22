@@ -52,7 +52,11 @@
     "noVerificationEmail": "Je n'ai pas reçu l'email de vérification",
     "continueWithGoogle": "Continuer avec Google",
     "signupSuccessTitle": "Compte créé !",
-    "signupSuccessMessage": "Vous pouvez maintenant vous connecter"
+    "signupSuccessMessage": "Vous pouvez maintenant vous connecter",
+    "resetPasswordSubtitle": "Entre ton email et nous t'enverrons un lien pour réinitialiser ton mot de passe",
+    "sendResetLink": "Envoyer le lien",
+    "verifyEmail": "Vérifie ton email",
+    "verifyEmailSubtitle": "Si ton email existe, nous t'avons envoyé un email de vérification !"
 
   },
   "errors": {

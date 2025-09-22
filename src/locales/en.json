@@ -52,7 +52,11 @@
     "noVerificationEmail": "I haven't received the verification email",
     "continueWithGoogle": "Continue with Google",
     "signupSuccessTitle": " Account created!",
-    "signupSuccessMessage": "You can now log in"
+    "signupSuccessMessage": "You can now log in",
+    "resetPasswordSubtitle": "Enter your email and we'll send you a link to reset your password",
+    "sendResetLink": "Send Reset Link",
+    "verifyEmail": "Verify Email",
+    "verifyEmailSubtitle": "If your email exists, we've sent you a verification email!"
   },
   "errors": {
     "required": "This field is required",
