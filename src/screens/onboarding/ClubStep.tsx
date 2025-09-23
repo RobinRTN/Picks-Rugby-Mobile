@@ -4,18 +4,29 @@ import { useTranslation } from 'react-i18next';
 import { AnimatedText } from '@/src/components/ui/AnimatedText';
 import { useOnboardingStore } from '@/src/stores/onboardingStore';
 import { top14Clubs } from '@/src/data/top14Clubs';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { OnboardingStackParamList } from '@/src/types/onboarding';
+
+type ClubStepNavigationProp = StackNavigationProp<OnboardingStackParamList, 'ClubStep'>;
 
 export function ClubStep() {
   const { t } = useTranslation();
-  const { data, updateData, completeOnboarding, previousStep } = useOnboardingStore();
-  const [selectedClub, setSelectedClub] = useState(data.favoriteClub);
+  const navigation = useNavigation<ClubStepNavigationProp>();
+  const { data, updateData, completeOnboarding } = useOnboardingStore();
+  const [selectedClub, setSelectedClub] = useState(data.club);
+
+  const handleBack = () => {
+    navigation.goBack();
+  };
 
   const handleFinish = () => {
-    updateData({ favoriteClub: selectedClub });
+    updateData({ club: selectedClub });
     completeOnboarding();
   };
 
   const isFormValid = selectedClub.length > 0;
+  const isLoading = false;
 
   return (
     <ScrollView
@@ -26,7 +37,7 @@ export function ClubStep() {
       {/* Back Button */}
       <View className="absolute top-16 left-6 z-10">
         <Pressable
-          onPress={previousStep}
+          onPress={handleBack}
           className="bg-beige-main/90 px-3 py-2 rounded-lg shadow-sm"
         >
           <Text className="text-green-dark font-semibold text-sm font-heading">
@@ -43,14 +54,14 @@ export function ClubStep() {
             delay={200}
             animationType="modern"
           >
-            Ton club de cœur
+            {t('onboarding.clubStepTitle')}
           </AnimatedText>
           <AnimatedText
             className="text-beige-light/80 text-center font-body"
             delay={400}
             animationType="modern"
           >
-            Choisis ton équipe favorite du Top 14
+            {t('onboarding.clubStepSubtitle')}
           </AnimatedText>
         </View>
 
@@ -60,14 +71,14 @@ export function ClubStep() {
             <Pressable
               key={club.id}
               onPress={() => setSelectedClub(club.id)}
-              className={`p-4 rounded-xl border-2 mb-2 ${
+              className={`p-3 rounded-xl border-2 mb-2 ${
                 selectedClub === club.id
                   ? 'bg-beige-main/20 border-beige-main'
                   : 'bg-beige-main/10 border-beige-main/30'
               }`}
             >
               <View className="flex-row justify-between items-center">
-                <View>
+                <View className="flex-1">
                   <Text className="text-beige-light font-bold font-heading">
                     {club.name}
                   </Text>
@@ -75,36 +86,53 @@ export function ClubStep() {
                     {club.city}
                   </Text>
                 </View>
-                <View
-                  className={`w-6 h-6 rounded-full border-2 ${
-                    selectedClub === club.id
-                      ? 'bg-beige-main border-beige-main'
-                      : 'border-beige-main/50'
-                  }`}
-                />
+                <View className="flex-row items-center">
+                  {/* Club colors indicator */}
+                  <View className="mr-3">
+                    <View className="w-6 h-6 rounded-full border border-beige-main/30 overflow-hidden">
+                      <View className="flex-row h-full">
+                        <View
+                          className="flex-1 h-full"
+                          style={{ backgroundColor: club.colors[0] }}
+                        />
+                        <View
+                          className="flex-1 h-full"
+                          style={{ backgroundColor: club.colors[1] }}
+                        />
+                      </View>
+                    </View>
+                  </View>
+                  {/* Selection indicator */}
+                  <View
+                    className={`w-6 h-6 rounded-full border-2 ${
+                      selectedClub === club.id
+                        ? 'bg-beige-main border-beige-main'
+                        : 'border-beige-main/50'
+                    }`}
+                  />
+                </View>
               </View>
             </Pressable>
           ))}
         </View>
 
         {/* Finish Button */}
-        <Pressable
-          className={`w-full rounded-xl py-4 font-semibold items-center justify-center active:scale-98 ${
-            isFormValid
-              ? 'bg-beige-main active:bg-beige-light'
-              : 'bg-beige-main/50'
-          }`}
-          onPress={handleFinish}
-          disabled={!isFormValid}
-        >
-          <Text
-            className={`font-bold text-sm font-heading ${
-              isFormValid ? 'text-green-dark' : 'text-beige-light/50'
-            }`}
+        <Pressable className={`w-full rounded-xl py-4 font-semibold items-center justify-center active:scale-98 mt-2 mb-10 ${
+                  isFormValid
+                      ? 'bg-green-lightest active:bg-green-light'
+                      : 'bg-green-lightest/50'
+              }`}
+              onPress={handleFinish}
+              disabled={!isFormValid || isLoading}
           >
-            TERMINER
-          </Text>
-        </Pressable>
+              <Text
+                  className={`font-bold text-sm font-heading ${
+                      isFormValid ? 'text-green-dark' : 'text-beige-light/50'
+                  }`}
+              >
+                  {t('onboarding.finish')}
+              </Text>
+          </Pressable>
       </View>
     </ScrollView>
   );

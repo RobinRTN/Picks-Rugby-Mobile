@@ -1,38 +1,27 @@
 import { create } from 'zustand';
-
-interface OnboardingData {
-  username: string;
-  profilePicture: string;
-  favoriteClub: string;
-}
+import { BaseUserOnboardingData, PartialOnboardingData } from '../types/onboarding';
 
 interface OnboardingStore {
   hasCompletedOnboarding: boolean;
-  currentStep: number;
-  data: OnboardingData;
+  data: BaseUserOnboardingData;
   completeOnboarding: () => void;
   resetOnboarding: () => void;
-  nextStep: () => void;
-  previousStep: () => void;
-  updateData: (updates: Partial<OnboardingData>) => void;
+  updateData: (updates: PartialOnboardingData) => void;
 }
 
 export const useOnboardingStore = create<OnboardingStore>((set, get) => ({
   hasCompletedOnboarding: false,
-  currentStep: 1,
   data: {
     username: '',
     profilePicture: '',
-    favoriteClub: '',
+    club: '',
+    country: '',
   },
   completeOnboarding: () => set({ hasCompletedOnboarding: true }),
   resetOnboarding: () => set({
     hasCompletedOnboarding: false,
-    currentStep: 1,
-    data: { username: '', profilePicture: '', favoriteClub: '' }
+    data: { username: '', profilePicture: '', club: '', country: '' }
   }),
-  nextStep: () => set((state) => ({ currentStep: Math.min(state.currentStep + 1, 2) })),
-  previousStep: () => set((state) => ({ currentStep: Math.max(state.currentStep - 1, 1) })),
   updateData: (updates) => set((state) => ({
     data: { ...state.data, ...updates }
   })),

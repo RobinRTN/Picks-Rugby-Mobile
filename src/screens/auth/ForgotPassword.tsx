@@ -7,14 +7,7 @@ import { AnimatedText } from '@/src/components/ui/AnimatedText';
 import { useForgotPassword } from '@/src/hooks/useAuth';
 import { useToast } from '@/src/hooks/useToast';
 import { useErrorHandler } from '@/src/hooks/useErrorHandler';
-
-type AuthStackParamList = {
-  Home: undefined;
-  Login: undefined;
-  Signup: undefined;
-  ForgotPassword: undefined;
-  Unconfirmed: undefined;
-};
+import { AuthStackParamList } from '@/src/types/auth';
 
 type NavigationProp = StackNavigationProp<AuthStackParamList, 'ForgotPassword'>;
 

@@ -7,14 +7,7 @@ import { AnimatedText } from '@/src/components/ui/AnimatedText';
 import { useResendVerificationEmail } from '@/src/hooks/useAuth';
 import { useErrorHandler } from '@/src/hooks/useErrorHandler';
 import { useToast } from '@/src/hooks/useToast';
-
-type AuthStackParamList = {
-  Home: undefined;
-  Login: undefined;
-  Signup: undefined;
-  ForgotPassword: undefined;
-  Unconfirmed: undefined;
-};
+import { AuthStackParamList } from '@/src/types/auth';
 
 type NavigationProp = StackNavigationProp<AuthStackParamList, 'Unconfirmed'>;
 

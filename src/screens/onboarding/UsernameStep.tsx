@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Pressable, ScrollView, Image } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { AnimatedText } from '@/src/components/ui/AnimatedText';
 import { useOnboardingStore } from '@/src/stores/onboardingStore';
 import { profilePictures } from '@/src/data/profilePictures';
+import { OnboardingStackParamList } from '@/src/types/onboarding';
+
+type UsernameStepNavigationProp = StackNavigationProp<OnboardingStackParamList, 'UsernameStep'>;
 
 export function UsernameStep() {
   const { t } = useTranslation();
-  const { data, updateData, nextStep } = useOnboardingStore();
+  const navigation = useNavigation<UsernameStepNavigationProp>();
+  const { data, updateData } = useOnboardingStore();
   const [username, setUsername] = useState(data.username);
-  const [selectedAvatar, setSelectedAvatar] = useState(data.profilePicture || profilePictures[0].id);
+  const [selectedAvatar, setSelectedAvatar] = useState(data.profilePicture);
 
   const handleNext = () => {
     updateData({ username, profilePicture: selectedAvatar });
-    nextStep();
+    navigation.navigate('CountryStep');
   };
 
-  const isFormValid = username.length >= 3;
+  const isFormValid = username.length >= 3 && selectedAvatar.length > 0;
   const isLoading = false;
 
   return (
@@ -66,13 +72,17 @@ export function UsernameStep() {
                 <Pressable
                   key={avatar.id}
                   onPress={() => setSelectedAvatar(avatar.id)}
-                  className={`w-28 h-28 me-2 mb-2 border-2 rounded-md ${
+                  className={`w-28 h-28 me-2 mb-2 border-2 rounded-md overflow-hidden ${
                     selectedAvatar === avatar.id
                       ? 'border-beige-main'
                       : 'border-beige-main/30'
                   }`}
                 >
-                  <Image source={avatar.image} className="w-full h-full" />
+                  <Image
+                    source={avatar.image}
+                    className="w-full h-full"
+                    style={{ resizeMode: 'cover' }}
+                  />
                 </Pressable>
               ))}
             </View>

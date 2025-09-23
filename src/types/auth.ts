@@ -43,3 +43,11 @@ export interface SignupResponse {
     refreshTokenExpiresAt: number;
     user: User;
 }
+
+export type AuthStackParamList = {
+  Home: undefined;
+  Login: undefined;
+  Signup: undefined;
+  ForgotPassword: undefined;
+  Unconfirmed: undefined;
+};

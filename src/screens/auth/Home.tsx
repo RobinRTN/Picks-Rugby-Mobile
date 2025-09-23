@@ -7,14 +7,7 @@ import { AnimatedText } from '@/src/components/ui/AnimatedText';
 import { useLanguage } from '@/src/hooks/useLanguage';
 import runningPlayer from '@/assets/images/running_player_small.png';
 import logo from '@/assets/images/brand_logo_rectangle.webp';
-
-type AuthStackParamList = {
-  Home: undefined;
-  Login: undefined;
-  Signup: undefined;
-  ForgotPassword: undefined;
-  Unconfirmed: undefined;
-};
+import { AuthStackParamList } from '@/src/types/auth';
 
 type NavigationProp = StackNavigationProp<AuthStackParamList, 'Home'>;
 

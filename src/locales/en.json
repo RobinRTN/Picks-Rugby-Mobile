@@ -84,6 +84,14 @@
     "continue": "CONTINUE",
     "createProfile": "Create Profile",
     "username": "Username",
-    "avatar": "Avatar"
+    "avatar": "Avatar",
+    "finish": "FINISH",
+    "countryStepTitle": "National team",
+    "countryStepSubtitle": "Select the national team you support",
+    "autres": "Others",
+    "sixNations": "Six Nations",
+    "rugbyChampionship": "Rugby Championship",
+    "clubStepTitle": "Club",
+    "clubStepSubtitle": "Choose your favorite club from the Top 14"
   }
 }

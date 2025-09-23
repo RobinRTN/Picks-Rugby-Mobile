@@ -7,14 +7,7 @@ import { AnimatedText } from '@/src/components/ui/AnimatedText';
 import { GoogleSignInButton } from '@/src/components/ui/GoogleSignInButton';
 import { useLogin } from '@/src/hooks/useAuth';
 import { useErrorHandler } from '@/src/hooks/useErrorHandler'
-
-type AuthStackParamList = {
-  Home: undefined;
-  Login: undefined;
-  Signup: undefined;
-  ForgotPassword: undefined;
-  Unconfirmed: undefined;
-};
+import { AuthStackParamList } from '@/src/types/auth';
 
 type NavigationProp = StackNavigationProp<AuthStackParamList, 'Login'>;
 

@@ -1,26 +1,26 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { useOnboardingStore } from '@/src/stores/onboardingStore';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import { UsernameStep } from '@/src/screens/onboarding/UsernameStep';
+import { CountryStep } from '@/src/screens/onboarding/CountryStep';
 import { ClubStep } from '@/src/screens/onboarding/ClubStep';
-
-type OnboardingStackParamList = {
-  UsernameStep: undefined;
-  ClubStep: undefined;
-};
+import { OnboardingStackParamList } from '@/src/types/onboarding';
 
 const Stack = createStackNavigator<OnboardingStackParamList>();
 
 export function OnboardingNavigator() {
-  const currentStep = useOnboardingStore((state) => state.currentStep);
-
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {currentStep === 1 ? (
-        <Stack.Screen name="UsernameStep" component={UsernameStep} />
-      ) : (
-        <Stack.Screen name="ClubStep" component={ClubStep} />
-      )}
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+      }}
+      initialRouteName="UsernameStep"
+    >
+      <Stack.Screen name="UsernameStep" component={UsernameStep} />
+      <Stack.Screen name="CountryStep" component={CountryStep} />
+      <Stack.Screen name="ClubStep" component={ClubStep} />
     </Stack.Navigator>
   );
 }
