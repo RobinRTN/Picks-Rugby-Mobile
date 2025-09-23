@@ -78,5 +78,12 @@
   },
   "home": {
     "catchy_text": "Rugby in the blood, flair in the predictions!"
+  },
+  "onboarding": {
+    "usernameStepSubtitle": "Choose your username and avatar",
+    "continue": "CONTINUE",
+    "createProfile": "Create Profile",
+    "username": "Username",
+    "avatar": "Avatar"
   }
 }

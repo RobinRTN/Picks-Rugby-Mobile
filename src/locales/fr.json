@@ -79,5 +79,12 @@
   },
   "home": {
     "catchy_text": "Rugby dans le sang, flair dans les pronos !"
+  },
+  "onboarding": {
+    "usernameStepSubtitle": "Choisis ton nom d'utilisateur et ton avatar",
+    "continue": "CONTINUER",
+    "createProfile": "Créer ton profil",
+    "username": "Nom d'utilisateur",
+    "avatar": "Avatar"
   }
 }

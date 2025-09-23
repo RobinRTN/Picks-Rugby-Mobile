@@ -1,0 +1,16 @@
+export const top14Clubs = [
+  { id: 'stade-francais', name: 'Stade Français', city: 'Paris', colors: ['#FF1493', '#000080'] },
+  { id: 'racing-92', name: 'Racing 92', city: 'Nanterre', colors: ['#87CEEB', '#FFFFFF'] },
+  { id: 'toulouse', name: 'Stade Toulousain', city: 'Toulouse', colors: ['#FF0000', '#000000'] },
+  { id: 'clermont', name: 'ASM Clermont', city: 'Clermont-Ferrand', colors: ['#FFD700', '#0000FF'] },
+  { id: 'lyon', name: 'LOU Rugby', city: 'Lyon', colors: ['#FF0000', '#000000'] },
+  { id: 'bordeaux', name: 'UBB', city: 'Bordeaux', colors: ['#000080', '#FFFFFF'] },
+  { id: 'montpellier', name: 'Montpellier HR', city: 'Montpellier', colors: ['#0000FF', '#FF4500'] },
+  { id: 'toulon', name: 'RC Toulon', city: 'Toulon', colors: ['#FF0000', '#000000'] },
+  { id: 'la-rochelle', name: 'Stade Rochelais', city: 'La Rochelle', colors: ['#FFD700', '#000000'] },
+  { id: 'castres', name: 'Castres Olympique', city: 'Castres', colors: ['#0000FF', '#FFFFFF'] },
+  { id: 'pau', name: 'Section Paloise', city: 'Pau', colors: ['#008000', '#FFFFFF'] },
+  { id: 'brive', name: 'CA Brive', city: 'Brive', colors: ['#FFA500', '#000000'] },
+  { id: 'bayonne', name: 'Aviron Bayonnais', city: 'Bayonne', colors: ['#0000FF', '#FFFFFF'] },
+  { id: 'perpignan', name: 'USAP', city: 'Perpignan', colors: ['#8B0000', '#FFD700'] },
+];
