@@ -19,7 +19,6 @@ export function useLogin() {
                 refreshTokenExpiresAt: data.refreshTokenExpiresAt,
             });
             setUser(data.user);
-            queryClient.invalidateQueries({ queryKey: ['user'] });
         },
         onError: handleError,
     });
@@ -37,7 +36,7 @@ export function useSignup() {
 export function useLogout() {
     const queryClient = useQueryClient();
     const logout = useAuthStore((state) => state.logout);
-    
+
     return useMutation({
         mutationFn: async () => {
             await authApi.logout();

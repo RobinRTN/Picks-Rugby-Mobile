@@ -7,7 +7,7 @@ import { AnimatedText } from '@/src/components/ui/AnimatedText';
 import { useOnboardingStore } from '@/src/stores/onboardingStore';
 import { profilePictures } from '@/src/data/profilePictures';
 import { OnboardingStackParamList } from '@/src/types/onboarding';
-import { useUserOnboarding } from '@/src/hooks/useOnboarding';
+import { useFirstOnboarding } from '@/src/hooks/useOnboarding';
 
 type UsernameStepNavigationProp = StackNavigationProp<OnboardingStackParamList, 'UsernameStep'>;
 
@@ -17,11 +17,10 @@ export function UsernameStep() {
   const { data, updateData } = useOnboardingStore();
   const [username, setUsername] = useState(data.username);
   const [selectedAvatar, setSelectedAvatar] = useState(data.profilePicture);
-  const usernameMutation = useUserOnboarding();
+  const usernameMutation = useFirstOnboarding();
   const isLoading = usernameMutation.isPending;
 
   const handleNext = () => {
-    updateData({ username, profilePicture: selectedAvatar });
     usernameMutation.mutate({ username, profilePicture: selectedAvatar },
       {
         onSuccess: () => {
@@ -29,6 +28,7 @@ export function UsernameStep() {
         },
         onError: (err: any) => {
           console.error('Username onboarding error:', err);
+
         },
       }
     );

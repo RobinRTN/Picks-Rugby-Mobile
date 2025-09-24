@@ -7,26 +7,36 @@ import { top14Clubs } from '@/src/data/top14Clubs';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { OnboardingStackParamList } from '@/src/types/onboarding';
+import { useThirdOnboarding } from '@/src/hooks/useOnboarding';
 
 type ClubStepNavigationProp = StackNavigationProp<OnboardingStackParamList, 'ClubStep'>;
 
 export function ClubStep() {
   const { t } = useTranslation();
   const navigation = useNavigation<ClubStepNavigationProp>();
-  const { data, updateData, completeOnboarding } = useOnboardingStore();
+  const { data, updateData } = useOnboardingStore();
   const [selectedClub, setSelectedClub] = useState(data.club);
+  const clubMutation = useThirdOnboarding();
+  const isLoading = clubMutation.isPending;
 
   const handleBack = () => {
     navigation.goBack();
   };
 
   const handleFinish = () => {
-    updateData({ club: selectedClub });
-    completeOnboarding();
+    clubMutation.mutate({ club: selectedClub },
+      {
+        onSuccess: () => {
+          updateData({ club: selectedClub });
+        },
+        onError: (err: any) => {
+          console.error('Club onboarding error:', err);
+        },
+      }
+    );
   };
 
   const isFormValid = selectedClub.length > 0;
-  const isLoading = false;
 
   return (
     <ScrollView

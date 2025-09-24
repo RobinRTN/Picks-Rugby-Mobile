@@ -57,6 +57,9 @@ export function useErrorHandler() {
   };
 
   const handleError = useCallback((error: any) => {
+    console.log('error', error);
+    console.log('error.response', error?.response);
+    console.log('error.response.status', error?.response?.status);
     const status = error?.response?.status;
     if (shouldShowToast(error)) {
       if (isNetworkError(error)) {

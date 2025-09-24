@@ -1,31 +1,45 @@
 import { useMutation } from "@tanstack/react-query";
 import { onboardingApi } from "@/src/api/onboarding";
-import { queryClient } from "@/src/services/queryClient";
 import { useErrorHandler } from "@/src/hooks/useErrorHandler";
 import { useOnboardingStore } from "@/src/stores/onboardingStore";
+import { useAuthStore } from "@/src/stores/authStore";
 
-export function useUserOnboarding() {
+export function useFirstOnboarding() {
   const { handleError } = useErrorHandler();
-  const completeOnboarding = useOnboardingStore((state) => state.completeOnboarding);
-
+  const updateData = useOnboardingStore((state) => state.updateData);
 
   return useMutation({
-    mutationFn: onboardingApi.userOnboarding,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['user'] });
-      completeOnboarding();
+    mutationFn: onboardingApi.firstOnboarding,
+    onSuccess: (_, data) => {
+      updateData({ username: data.username, profilePicture: data.profilePicture });
     },
     onError: handleError,
   });
 }
 
-export function useClubOnboarding() {
+export function useSecondOnboarding() {
   const { handleError } = useErrorHandler();
+  const updateData = useOnboardingStore((state) => state.updateData);
 
   return useMutation({
-    mutationFn: onboardingApi.clubOnboarding,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['club'] });
+    mutationFn: onboardingApi.secondOnboarding,
+    onSuccess: (_, data) => {
+      updateData({ country: data.country });
+    },
+    onError: handleError,
+  });
+}
+
+export function useThirdOnboarding() {
+  const { handleError } = useErrorHandler();
+  const updateData = useOnboardingStore((state) => state.updateData);
+  const setUser = useAuthStore((state) => state.setUser);
+
+  return useMutation({
+    mutationFn: onboardingApi.thirdOnboarding,
+    onSuccess: (updatedUser, data) => {
+      updateData({ club: data.club });
+      setUser(updatedUser);
     },
     onError: handleError,
   });

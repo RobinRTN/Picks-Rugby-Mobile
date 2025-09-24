@@ -1,20 +1,35 @@
 import { securedApi } from "../services/kyClient";
-import { OnboardingStep1, OnboardingStep2 } from "../types/onboarding";
+import { OnboardingStep1, OnboardingStep2, OnboardingStep3 } from "../types/onboarding";
+import { User } from "../types/auth";
 
 export const onboardingApi = {
-  async userOnboarding(data: OnboardingStep1): Promise<void> {
+  async firstOnboarding(data: OnboardingStep1): Promise<void> {
     return securedApi
-    .post('users/user-onboarding', {
+    .post('users/onboarding/first-step', {
       json: data,
     })
     .json();
   },
 
-  async clubOnboarding(data: OnboardingStep2): Promise<void> {
+  async secondOnboarding(data: OnboardingStep2): Promise<void> {
     return securedApi
-    .post('clubs/club-onboarding', {
+    .post('users/onboarding/second-step', {
       json: data,
     })
+    .json();
+  },
+
+  async thirdOnboarding(data: OnboardingStep3): Promise<User> {
+    return securedApi
+    .post('users/onboarding/third-step', {
+      json: data,
+    })
+    .json();
+  },
+
+  async getUser(): Promise<User> {
+    return securedApi
+    .get('users/me')
     .json();
   },
 };

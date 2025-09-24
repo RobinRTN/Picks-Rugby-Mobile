@@ -7,22 +7,33 @@ import { AnimatedText } from '@/src/components/ui/AnimatedText';
 import { useOnboardingStore } from '@/src/stores/onboardingStore';
 import { countries } from '@/src/data/countries';
 import { OnboardingStackParamList } from '@/src/types/onboarding';
+import { useSecondOnboarding } from '@/src/hooks/useOnboarding';
 
 type CountryStepNavigationProp = StackNavigationProp<OnboardingStackParamList, 'CountryStep'>;
 
 export function CountryStep() {
   const { t } = useTranslation();
   const navigation = useNavigation<CountryStepNavigationProp>();
-  const { data, updateData } = useOnboardingStore();
+  const { data } = useOnboardingStore();
   const [selectedCountry, setSelectedCountry] = useState(data.country);
+  const countryMutation = useSecondOnboarding();
+  const isLoading = countryMutation.isPending;
 
   const handleBack = () => {
     navigation.goBack();
   };
 
   const handleNext = () => {
-    updateData({ country: selectedCountry });
-    navigation.navigate('ClubStep');
+    countryMutation.mutate({ country: selectedCountry },
+      {
+        onSuccess: () => {
+          navigation.navigate('ClubStep');
+        },
+        onError: (err: any) => {
+          console.error('Country onboarding error:', err);
+        },
+      }
+    );
   };
 
   const isFormValid = selectedCountry.length > 0;

@@ -43,7 +43,7 @@ export const securedApi = ky.create({
           }
           const newTokens = await refreshing;
           refreshing = null;
-          
+
           if (newTokens) {
             request.headers.set('Authorization', `Bearer ${newTokens.accessToken}`);
             return;
@@ -54,7 +54,7 @@ export const securedApi = ky.create({
         }
 
         request.headers.set('Authorization', `Bearer ${tokens.accessToken}`);
-      
+
       },
     ],
 
@@ -64,7 +64,7 @@ export const securedApi = ky.create({
           return response;
         }
 
-        const wasRetried = request.headers.get('x-refresh-retry');
+        const wasRetried = request.headers.get('x-refres h-retry');
         if (wasRetried) return response;
 
         if (!refreshing) {

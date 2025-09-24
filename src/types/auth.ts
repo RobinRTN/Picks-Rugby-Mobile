@@ -16,6 +16,10 @@ export interface User {
     id: string;
     email: string;
     username?: string;
+    profilePicture?: string;
+    country?: string;
+    club?: string;
+    hasCompletedOnboarding: boolean;
 }
 
 export interface LoginRequest {
