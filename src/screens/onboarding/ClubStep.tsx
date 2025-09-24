@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { OnboardingStackParamList } from '@/src/types/onboarding';
 import { useThirdOnboarding } from '@/src/hooks/useOnboarding';
+import { useToast } from '@/src/hooks/useToast';
 
 type ClubStepNavigationProp = StackNavigationProp<OnboardingStackParamList, 'ClubStep'>;
 
@@ -18,6 +19,7 @@ export function ClubStep() {
   const [selectedClub, setSelectedClub] = useState(data.club);
   const clubMutation = useThirdOnboarding();
   const isLoading = clubMutation.isPending;
+  const { showSuccess } = useToast();
 
   const handleBack = () => {
     navigation.goBack();
@@ -27,7 +29,7 @@ export function ClubStep() {
     clubMutation.mutate({ club: selectedClub },
       {
         onSuccess: () => {
-          updateData({ club: selectedClub });
+          showSuccess('onboarding.clubStepSuccess', true, 'onboarding.clubStepSuccessMessage');
         },
         onError: (err: any) => {
           console.error('Club onboarding error:', err);

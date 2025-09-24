@@ -94,6 +94,8 @@
     "sixNations": "Six Nations",
     "rugbyChampionship": "Rugby Championship",
     "clubStepTitle": "Club",
-    "clubStepSubtitle": "Choisis ton club de cœur du Top 14"
+    "clubStepSubtitle": "Choisis ton club de cœur du Top 14",
+    "clubStepSuccess": "Bravo ! Ton profil est maintenant complet !",
+    "clubStepSuccessMessage": "Tu peux maintenant commencer à faire tes pronos !"
   }
 }
