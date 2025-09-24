@@ -1,6 +1,6 @@
 {
   "common": {
-    "loading": "Loading...",
+    "loading": "LOADING...",
     "error": "Error",
     "success": "Success",
     "cancel": "Cancel",

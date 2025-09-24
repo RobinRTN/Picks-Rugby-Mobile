@@ -7,6 +7,7 @@ import { AnimatedText } from '@/src/components/ui/AnimatedText';
 import { useOnboardingStore } from '@/src/stores/onboardingStore';
 import { profilePictures } from '@/src/data/profilePictures';
 import { OnboardingStackParamList } from '@/src/types/onboarding';
+import { useUserOnboarding } from '@/src/hooks/useOnboarding';
 
 type UsernameStepNavigationProp = StackNavigationProp<OnboardingStackParamList, 'UsernameStep'>;
 
@@ -16,14 +17,24 @@ export function UsernameStep() {
   const { data, updateData } = useOnboardingStore();
   const [username, setUsername] = useState(data.username);
   const [selectedAvatar, setSelectedAvatar] = useState(data.profilePicture);
+  const usernameMutation = useUserOnboarding();
+  const isLoading = usernameMutation.isPending;
 
   const handleNext = () => {
     updateData({ username, profilePicture: selectedAvatar });
-    navigation.navigate('CountryStep');
+    usernameMutation.mutate({ username, profilePicture: selectedAvatar },
+      {
+        onSuccess: () => {
+          navigation.navigate('CountryStep');
+        },
+        onError: (err: any) => {
+          console.error('Username onboarding error:', err);
+        },
+      }
+    );
   };
 
   const isFormValid = username.length >= 3 && selectedAvatar.length > 0;
-  const isLoading = false;
 
   return (
     <ScrollView
@@ -97,13 +108,15 @@ export function UsernameStep() {
               onPress={handleNext}
               disabled={!isFormValid || isLoading}
           >
-              <Text
-                  className={`font-bold text-sm font-heading ${
-                      isFormValid ? 'text-green-dark' : 'text-beige-light/50'
-                  }`}
-              >
-                  {t('onboarding.continue')}
-              </Text>
+            <Text
+                className={`font-bold text-sm font-heading ${
+                    isFormValid ? 'text-green-dark' : 'text-beige-light/50'
+                }`}
+            >
+                {isLoading
+                    ? t('common.loading')
+                    : t('onboarding.continue')}
+            </Text>
           </Pressable>
         </View>
       </View>
