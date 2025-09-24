@@ -6,7 +6,6 @@ import { useErrorHandler } from "./useErrorHandler";
 
 export function useLogin() {
     const setUser = useAuthStore((state) => state.setUser);
-    const queryClient = useQueryClient();
     const { handleError } = useErrorHandler();
 
     return useMutation({
