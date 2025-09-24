@@ -37,7 +37,7 @@ export default function ForgotPassword() {
 
     const formError =
     resetPasswordMutation.error && shouldShowFormError(resetPasswordMutation.error)
-      ? getErrorMessage(resetPasswordMutation.error)
+      ? getErrorMessage(resetPasswordMutation.error, 'auth')
       : null;
 
     return (

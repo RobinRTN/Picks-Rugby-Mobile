@@ -8,6 +8,8 @@ import { useOnboardingStore } from '@/src/stores/onboardingStore';
 import { profilePictures } from '@/src/data/profilePictures';
 import { OnboardingStackParamList } from '@/src/types/onboarding';
 import { useFirstOnboarding } from '@/src/hooks/useOnboarding';
+import { useErrorHandler } from '@/src/hooks/useErrorHandler';
+
 
 type UsernameStepNavigationProp = StackNavigationProp<OnboardingStackParamList, 'UsernameStep'>;
 
@@ -19,6 +21,7 @@ export function UsernameStep() {
   const [selectedAvatar, setSelectedAvatar] = useState(data.profilePicture);
   const usernameMutation = useFirstOnboarding();
   const isLoading = usernameMutation.isPending;
+  const { getErrorMessage, shouldShowFormError } = useErrorHandler();
 
   const handleNext = () => {
     usernameMutation.mutate({ username, profilePicture: selectedAvatar },
@@ -35,6 +38,11 @@ export function UsernameStep() {
   };
 
   const isFormValid = username.length >= 3 && selectedAvatar.length > 0;
+
+  const formError =
+    usernameMutation.error && shouldShowFormError(usernameMutation.error)
+      ? getErrorMessage(usernameMutation.error, 'onboarding')
+      : null;
 
   return (
     <ScrollView
@@ -74,6 +82,10 @@ export function UsernameStep() {
               className="bg-beige-main/20 border border-beige-main/30 rounded-xl px-4 py-4 text-beige-light font-body"
               style={{ fontSize: 16 }}
             />
+            {/* Form Error */}
+            {formError && (
+              <Text className="text-red-500 text-sm font-body mt-2">{formError}</Text>
+            )}
           </View>
 
           {/* Avatar Selection */}

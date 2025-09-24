@@ -36,7 +36,7 @@ export default function Unconfirmed() {
 
     const formError =
     resendVerificationEmailMutation.error && shouldShowFormError(resendVerificationEmailMutation.error)
-      ? getErrorMessage(resendVerificationEmailMutation.error)
+      ? getErrorMessage(resendVerificationEmailMutation.error, 'auth')
       : null;
 
     return (

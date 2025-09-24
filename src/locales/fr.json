@@ -75,7 +75,8 @@
     "connectionMessage": "Vérifiez votre connexion internet",
     "serverErrorMessage": "Veuillez réessayer plus tard",
     "tooManyRequests": "Trop de tentatives",
-    "tooManyRequestsMessage": "Veuillez réessayer dans 1 minute"
+    "tooManyRequestsMessage": "Veuillez réessayer dans 1 minute",
+    "invalidUsername": "Ce nom d'utilisateur est déjà utilisé"
   },
   "home": {
     "catchy_text": "Rugby dans le sang, flair dans les pronos !"

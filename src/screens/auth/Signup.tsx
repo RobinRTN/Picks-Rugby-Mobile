@@ -65,7 +65,7 @@ export default function Signup() {
 
     const formError =
       signupMutation.error && shouldShowFormError(signupMutation.error)
-        ? getErrorMessage(signupMutation.error)
+        ? getErrorMessage(signupMutation.error, 'auth')
         : null;
 
     return (

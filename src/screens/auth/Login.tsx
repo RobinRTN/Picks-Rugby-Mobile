@@ -59,7 +59,7 @@ export default function Login() {
 
     const formError =
       loginMutation.error && shouldShowFormError(loginMutation.error)
-        ? getErrorMessage(loginMutation.error)
+        ? getErrorMessage(loginMutation.error, 'auth')
         : null;
 
     return (

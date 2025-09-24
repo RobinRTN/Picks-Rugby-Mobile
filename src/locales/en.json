@@ -74,7 +74,8 @@
     "connectionMessage": "Please check your internet connection",
     "serverErrorMessage": "Please try again later",
     "tooManyRequests": "Too many attempts",
-    "tooManyRequestsMessage": "Please try again in 1 minute"
+    "tooManyRequestsMessage": "Please try again in 1 minute",
+    "invalidUsername": "Username already taken"
   },
   "home": {
     "catchy_text": "Rugby in the blood, flair in the predictions!"

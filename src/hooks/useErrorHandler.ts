@@ -14,7 +14,7 @@ export function useErrorHandler() {
     );
   };
 
-  const getErrorMessage = (error: any): string => {
+  const getErrorMessage = (error: any, page: 'onboarding' | 'auth'): string => {
     if (isNetworkError(error)) {
       return t('errors.networkError');
     }
@@ -28,7 +28,7 @@ export function useErrorHandler() {
     }
 
     if (error?.response?.status === 409) {
-      return t('errors.emailUsed');
+      return page === 'onboarding' ? t('errors.invalidUsername') : t('errors.emailUsed');
     }
 
     if (error?.response?.status === 429) {
@@ -57,9 +57,6 @@ export function useErrorHandler() {
   };
 
   const handleError = useCallback((error: any) => {
-    console.log('error', error);
-    console.log('error.response', error?.response);
-    console.log('error.response.status', error?.response?.status);
     const status = error?.response?.status;
     if (shouldShowToast(error)) {
       if (isNetworkError(error)) {
