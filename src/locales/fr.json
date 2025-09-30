@@ -97,5 +97,11 @@
     "clubStepSubtitle": "Choisis ton club de cœur du Top 14",
     "clubStepSuccess": "Bravo ! Ton profil est maintenant complet !",
     "clubStepSuccessMessage": "Tu peux maintenant commencer à faire tes pronos !"
+  },
+  "titles": {
+    "predictions": "Prédictions",
+    "scores": "Scores",
+    "leagues": "Ligues",
+    "profile": "Profil"
   }
 }

@@ -1,51 +1,29 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text } from 'react-native';
+import Prediction from '@/src/screens/main/Prediction';
+import Score from '@/src/screens/main/Score';
+import League from '@/src/screens/main/League';
+import Profile from '@/src/screens/main/Profile';
+import { useTranslation } from 'react-i18next';
 
 type TabsParamList = {
+  Predictions: undefined;
+  Scores: undefined;
   Leagues: undefined;
-  Results: undefined;
   Profile: undefined;
 };
 
 const Tab = createBottomTabNavigator<TabsParamList>();
 
-function LeaguesScreen() {
-  return (
-    <View className="flex-1 justify-center items-center bg-green-main">
-      <Text className="text-2xl text-beige-light font-bold font-heading">
-        Ligues
-      </Text>
-    </View>
-  );
-}
-
-function ResultsScreen() {
-  return (
-    <View className="flex-1 justify-center items-center bg-green-main">
-      <Text className="text-2xl text-beige-light font-bold font-heading">
-        Résultats
-      </Text>
-    </View>
-  );
-}
-
-function ProfileScreen() {
-  return (
-    <View className="flex-1 justify-center items-center bg-green-main">
-      <Text className="text-2xl text-beige-light font-bold font-heading">
-        Profil
-      </Text>
-    </View>
-  );
-}
-
 export function TabsNavigator() {
+
+  const { t } = useTranslation();
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Leagues" component={LeaguesScreen} />
-      <Tab.Screen name="Results" component={ResultsScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Predictions" component={Prediction} options={{ title: t('titles.predictions') }} />
+      <Tab.Screen name="Scores" component={Score} options={{ title: t('titles.scores') }} />
+      <Tab.Screen name="Leagues" component={League} options={{ title: t('titles.leagues') }} />
+      <Tab.Screen name="Profile" component={Profile} options={{ title: t('titles.profile') }} />
     </Tab.Navigator>
   );
 }

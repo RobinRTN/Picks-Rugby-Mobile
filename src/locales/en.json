@@ -96,5 +96,11 @@
     "clubStepSubtitle": "Choose your favorite club from the Top 14",
     "clubStepSuccess": "Congratulations! Your profile is now complete!",
     "clubStepSuccessMessage": "You can now start making your predictions!"
+  },
+  "titles": {
+    "predictions": "Predictions",
+    "scores": "Scores",
+    "leagues": "Leagues",
+    "profile": "Profile"
   }
 }
