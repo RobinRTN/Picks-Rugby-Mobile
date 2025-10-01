@@ -8,14 +8,6 @@ export interface Team {
 }
 
 export interface Prediction {
-  selected_leagues: Array<{
-    id: number;
-    name: string;
-    championship: {
-      id: number;
-      name: string;
-    };
-  }>;
   matches_by_date: Array<{
     date: string;
     day_name: string;
@@ -42,6 +34,7 @@ export interface Prediction {
         away_tries: number;
         margin: number;
       } | null;
+      is_user_league: boolean;
     }>;
   }>;
 }
