@@ -38,3 +38,5 @@ export interface Prediction {
     }>;
   }>;
 }
+
+export type PredictionOption = 'big_win_home' | 'small_win_home' | 'draw' | 'small_win_away' | 'big_win_away';

@@ -103,5 +103,13 @@
     "scores": "Scores",
     "leagues": "Ligues",
     "profile": "Profil"
+  },
+  "prediction": {
+    "selectPrediction": "Sélectionne ton prono",
+    "bigWinHome": "Grosse victoire",
+    "smallWinHome": "Petite victoire",
+    "draw": "Match nul",
+    "smallWinAway": "Petite victoire",
+    "bigWinAway": "Grosse victoire"
   }
 }

@@ -1,5 +1,5 @@
 import { securedApi } from "../services/kyClient";
-import { Prediction } from "../types/prediction";
+import { Prediction, PredictionOption } from "../types/prediction";
 
 export const predictionApi = {
   async getPredictions(championshipNames: string[]): Promise<Prediction> {
@@ -7,6 +7,12 @@ export const predictionApi = {
       searchParams: {
         championshipNames: championshipNames.join(','),
       },
+    }).json();
+  },
+
+  async submitPrediction(matchId: number, prediction: PredictionOption): Promise<unknown> {
+    return securedApi.post(`fantasy/predictions/${matchId}`, {
+      json: { prediction },
     }).json();
   },
 };

@@ -102,5 +102,13 @@
     "scores": "Scores",
     "leagues": "Leagues",
     "profile": "Profile"
+  },
+  "prediction": {
+    "selectPrediction": "Select your prediction",
+    "bigWinHome": "Big win",
+    "smallWinHome": "Small win",
+    "draw": "Draw",
+    "smallWinAway": "Small win",
+    "bigWinAway": "Big win"
   }
 }
